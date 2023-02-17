@@ -1,45 +1,39 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import "../index.css";
 
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary?: boolean;
-  /**
-   * What background color to use
-   */
+  type?: "button" | "submit" | "reset" | undefined;
   backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
+  size?: "small" | "medium" | "large";
   label: string;
-  /**
-   * Optional click handler
-   */
   onClick?: () => void;
 }
+export const Button = ({ primary = false, size = "medium", type, backgroundColor, label, ...props }: ButtonProps) => {
+  const mode = primary ? "bg-[#1ea7fd] text-[#fff]" : "bg-[#fff] text-[#1ea7fd]";
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const handleGetPropperSize = (size: string) => {
+    switch (size) {
+      case "small":
+        return "py-1 px-2 text-sm";
+      case "medium":
+        return "py-2 px-4 text-base";
+      case "large":
+        return "py-3 px-8 text-lg";
+      default:
+        break;
+    }
+  };
+
   return (
     <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      type={type}
       style={{ backgroundColor }}
+      className={[
+        " border border-[#1ea7fd]  font-medium rounded focus:outline-none focus:shadow-outline",
+        `${handleGetPropperSize(size)}`,
+        mode,
+      ].join(" ")}
       {...props}
     >
       {label}
