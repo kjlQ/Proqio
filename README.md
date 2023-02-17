@@ -1,8 +1,10 @@
 # Proqio technical interview
 ## Basic commands
 - Run app: <code>yarn vite</code>
-- Install deps: <code>yarn install</code>
-- Build app: <code>yarn build</code>
+- Run storybook: <code>yarn run storybook</code>
+- Run tailwind: <code>npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch</code>
+
+
 
 ## Summary
 **The goal of this task is to create a form which a user can fill their email, name, surname and phone number, click on a submit button and a modal will open showing the data filled in the inputs and with the front_default sprites images of this array of Pokemons: [ditto, pikachu, charmander]. The modal has to have a button that close it.**
